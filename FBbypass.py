@@ -6,8 +6,8 @@ import urllib.parse
 
 class Bypass():
     def __init__(self):
-        # self.par = sys.argv[1]
-        self.par = 'target.txt'
+        self.par = sys.argv[1]
+        # self.par = 'target.txt'
         self.target_list = []
         self.results = []
         self.basic_payload = []
