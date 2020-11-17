@@ -2,11 +2,21 @@ import sys
 import requests
 import os
 import urllib.parse
+import click
+
+
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+
+
+@click.command(context_settings=CONTEXT_SETTINGS)
+@click.option('-t', '--target', help="URL地址或者文件路径")
+def main(target):
+    Bypass(target)
 
 
 class Bypass():
-    def __init__(self):
-        self.par = sys.argv[1]
+    def __init__(self, url_or_file):
+        self.par = url_or_file
         # self.par = 'target.txt'
         self.target_list = []
         self.results = []
@@ -53,7 +63,7 @@ class Bypass():
     def basic_test(self):
         for url in self.target_list:
             for payload in self.basic_payload:
-                requ = requests.get(url=url + payload, timeout=3)
+                requ = requests.get(url=url + payload, timeout=10)
                 if requ.status_code < 400:
                     self.results.append(url + payload)
                     # self.target_list.remove(url)
@@ -99,4 +109,4 @@ class Bypass():
 
 
 if __name__ == '__main__':
-    a = Bypass()
+    main()

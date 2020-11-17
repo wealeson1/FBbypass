@@ -2,12 +2,15 @@
 
 403 Bypass
 
-python ./FBbypass.py url/file path
+## 工具参数说明
+```
+Options:
+  -t, --target          目标URL或者目标文件路径
+```
 
-eg:
+## 使用例子
+```
+python ./FBbypass.py -t http://target.com/target/
 
-python ./FBbypass.py ./target.txt
-
-or
-
-python ./FBbypass.py https://target.com/403/
+python ./FBbypass.py -t targets.txt
+```
